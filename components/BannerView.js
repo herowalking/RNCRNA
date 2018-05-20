@@ -12,7 +12,8 @@ const JsonData = require('../data/test2.json');
 const Dimensions = require('Dimensions');
 const ScreenWidth = Dimensions.get('window').width;
 
-const BaseUrl = 'http://192.168.56.1:3000/images/';
+// const BaseUrl = 'http://192.168.56.1:3000/images/';
+const BaseUrl = 'http://192.168.1.100:3000/images/';
 
 class BannerView extends React.Component {
     static defaultProps = {
