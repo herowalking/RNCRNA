@@ -1,10 +1,11 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
     StyleSheet,
     View,
     Text,
     Image,
-    ListView
+    // ListView
+    FlatList
 } from 'react-native';
 
 // var JsonData = require('../data/test_wine.json');
@@ -14,7 +15,7 @@ const BaseUrl = 'http://192.168.22.51:3000/images/';
 const Dimensions = require('Dimensions');
 const ScreenWidth = Dimensions.get('window').width;
 
-class MyListView extends React.Component {
+export default class MyListView extends React.Component {
     constructor(props) {
         super(props);
         //提供ListView所需的数据源
@@ -23,18 +24,29 @@ class MyListView extends React.Component {
         //即：数据是否发生了变化
         //虚拟DOM的优点
         this.state = {
-            dataSource: new ListView.DataSource({rowHasChanged: (r1, r2) => r1 != r2})
+            // dataSource: new ListView.DataSource({rowHasChanged: (r1, r2) => r1 != r2})
+            dataSource: []
         };
     }
 
-    renderRow(row, sectionID, rowID) {
-        return <View style={styles.container}>
-            <Image source={{uri:BaseUrl+row.image}} style={styles.iconStyle}/>
-            <View style={styles.textWrapperStyle}>
-                <Text style={styles.titleStyle}>{row.name}</Text>
-                <Text style={styles.moneyStyle}>￥{row.money}</Text>
+    render() {
+        return (
+            <View style={styles.container}>
+                <FlatList
+                    keyExtractor={item => item.key.toString()}
+                    data={this.state.dataSource}
+                    renderItem={({item}) => (
+                        <View style={styles.container}>
+                            <Image source={{uri:BaseUrl+item.image}} style={styles.iconStyle}/>
+                            <View style={styles.textWrapperStyle}>
+                                <Text style={styles.titleStyle}>{item.name}</Text>
+                                <Text style={styles.moneyStyle}>￥{item.money}</Text>
+                            </View>
+                        </View>
+                    )}
+                />
             </View>
-        </View>;
+        );
     }
 
     //加载数据
@@ -50,16 +62,19 @@ class MyListView extends React.Component {
         })
             .then((response) => response.json())
             .then((responseData) => {
+                let i = 0;
+                let dataList = [];
+                responseData.map((item) => {
+                    dataList.push({
+                        key:i,
+                        ...item
+                    })
+                    i++;
+                })
                 this.setState({
-                    dataSource: this.state.dataSource.cloneWithRows(responseData)
+                    dataSource: dataList
                 });
             }).done();
-    }
-
-    render() {
-        return <ListView
-            dataSource={this.state.dataSource}
-            renderRow={this.renderRow}/>
     }
 
     //渲染完组件，加载数据
