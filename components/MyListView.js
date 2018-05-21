@@ -8,7 +8,8 @@ import {
 } from 'react-native';
 
 // var JsonData = require('../data/test_wine.json');
-const BaseUrl = 'http://192.168.56.1:3000/images/';
+// const BaseUrl = 'http://192.168.56.1:3000/images/';
+const BaseUrl = 'http://192.168.22.51:3000/images/';
 
 const Dimensions = require('Dimensions');
 const ScreenWidth = Dimensions.get('window').width;
