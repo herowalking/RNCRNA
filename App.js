@@ -1,31 +1,19 @@
 import React from 'react';
-import { Text, View, Button } from 'react-native';
-import { createMaterialTopTabNavigator } from 'react-navigation';
+import { Text, View } from 'react-native';
+import { createStackNavigator } from 'react-navigation';
 
-const HomeScreen = () => {
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Home Screen</Text>
-    </View>
+class HomeScreen extends React.Component {
+    render() {
+        return (
+            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                <Text>Home Screen</Text>
+            </View>
+        )
+    }
 }
 
-const ProfileScreen = () => {
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Profile Screen</Text>
-    </View>
-}
-
-const RootTabs = createMaterialTopTabNavigator({
+export default createStackNavigator({
     Home: {
-        screen: HomeScreen,
-    },
-    Profile: {
-        screen: ProfileScreen,
+        screen: HomeScreen
     }
-},{
-    tabBarOptions: {
-        activeTintColor: 'tomato',
-        inactiveTintColor: 'gray'
-    }
-});
-
-export default RootTabs;
+})
