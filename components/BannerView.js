@@ -18,7 +18,7 @@ const BaseUrl = 'http://192.168.22.51:3000/images/';
 
 class BannerView extends React.Component {
     static defaultProps = {
-        duration : 1000
+        duration : 2000
     }
 
     constructor(props){
