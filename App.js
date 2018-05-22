@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, Button } from 'react-native';
-import { createBottomTabNavigator } from 'react-navigation';
+import { createMaterialTopTabNavigator } from 'react-navigation';
 
 const HomeScreen = () => {
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -14,7 +14,7 @@ const ProfileScreen = () => {
     </View>
 }
 
-const RootTabs = createBottomTabNavigator({
+const RootTabs = createMaterialTopTabNavigator({
     Home: {
         screen: HomeScreen,
     },
