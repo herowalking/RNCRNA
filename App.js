@@ -1,7 +1,6 @@
 import React from 'react';
 import { Text, View, Button } from 'react-native';
-import { StackNavigator } from 'react-navigation';
-import { TabNavigator } from 'react-navigation';
+import { createBottomTabNavigator } from 'react-navigation';
 
 const HomeScreen = () => {
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -15,7 +14,7 @@ const ProfileScreen = () => {
     </View>
 }
 
-const RootTabs = TabNavigator({
+const RootTabs = createBottomTabNavigator({
     Home: {
         screen: HomeScreen,
     },
@@ -23,10 +22,9 @@ const RootTabs = TabNavigator({
         screen: ProfileScreen,
     }
 },{
-    tabBarPosition: 'bottom',
-    animationEnabled: true,
     tabBarOptions: {
-        activeTintColor: '#fff',
+        activeTintColor: 'tomato',
+        inactiveTintColor: 'gray'
     }
 });
 
