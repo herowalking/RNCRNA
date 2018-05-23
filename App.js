@@ -1,9 +1,30 @@
 import React from 'react';
 import { FlatList, StyleSheet, Text, View, Button } from 'react-native';
 import { createMaterialTopTabNavigator } from 'react-navigation';
+import Icon from 'react-native-vector-icons/Ionicons';
 
-const HomeScreen = () => (
+//头部公共组件
+class HeadScreen extends React.Component {
+    render() {
+        return (
+            <View style={{height:75, backgroundColor:'#242529', padding:10}}>
+                <View style={{flex:1, flexDirection:'row', alignItems:'center'}}>
+                    <View style={{flex:1}}>
+                        <Text style={{color:'#fff'}}>微信</Text>
+                    </View>
+                    <View style={{flex:1, alignItems:'flex-end'}}>
+                        <Text><Icon name='md-add' color='#fff' size={18} /></Text>
+                    </View>
+                </View>
+            </View>
+        )
+    }
+}
+
+//动态组件
+const DynamicScreen = () => (
     <View style={styles.container}>
+        <HeadScreen/>
         <Text style={styles.news}>新闻列表</Text>
         <FlatList
             data={[
@@ -21,12 +42,14 @@ const HomeScreen = () => (
     </View>
 );
 
-const ProfileScreen = () => (
+//发现组件
+const FindScreen = () => (
     <View style={{ flex:1, alignItems:'center', justifyContent:'center' }}>
-        <Text>Profile Screen</Text>
+        <Text>Find Screen</Text>
     </View>
 )
 
+//我的组件
 const MyScreen = () => (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>My Screen</Text>
@@ -36,16 +59,16 @@ const MyScreen = () => (
 
 const RootTabs = createMaterialTopTabNavigator(
     {
-        Home: {
-            screen: HomeScreen,
+        Dynamic: {
+            screen: DynamicScreen,
             navigationOptions: ({navigation}) => ({
                 title: '动态',
             }),
         },
-        Profile: {
-            screen: ProfileScreen,
+        Find: {
+            screen: FindScreen,
             navigationOptions: ({navigation}) => ({
-                title: '资料'
+                title: '发现'
             })
         },
         My: {
