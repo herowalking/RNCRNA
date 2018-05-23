@@ -2,7 +2,7 @@ import React from 'react';
 import { FlatList, StyleSheet, Text, View, Button } from 'react-native';
 import { createMaterialTopTabNavigator } from 'react-navigation';
 
-const dynamicScreen = () => (
+const HomeScreen = () => (
     <View style={styles.container}>
         <Text style={styles.news}>新闻列表</Text>
         <FlatList
@@ -21,9 +21,9 @@ const dynamicScreen = () => (
     </View>
 );
 
-const FindScreen = () => (
+const ProfileScreen = () => (
     <View style={{ flex:1, alignItems:'center', justifyContent:'center' }}>
-        <Text>Find Screen</Text>
+        <Text>Profile Screen</Text>
     </View>
 )
 
@@ -36,19 +36,19 @@ const MyScreen = () => (
 
 const RootTabs = createMaterialTopTabNavigator(
     {
-        dynamic: {
-            screen: dynamicScreen,
+        Home: {
+            screen: HomeScreen,
             navigationOptions: ({navigation}) => ({
                 title: '动态',
             }),
         },
-        find: {
-            screen: FindScreen,
+        Profile: {
+            screen: ProfileScreen,
             navigationOptions: ({navigation}) => ({
-                title: '发现'
+                title: '资料'
             })
         },
-        Profile: {
+        My: {
             screen: MyScreen,
             navigationOptions: ({navigation}) => ({
                 title: '我的'
