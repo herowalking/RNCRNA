@@ -1,50 +1,35 @@
 import React from 'react';
 import { Text, View, Button } from 'react-native';
-import { createStackNavigator } from 'react-navigation';
+import { createBottomTabNavigator } from 'react-navigation';
 
-class HomeScreen extends React.Component {
-    render() {
-        return (
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <Text>Home Screen</Text>
-                <Button
-                    title="跳转到详情页"
-                    onPress={ () => this.props.navigation.navigate('Details') }
-                />
-            </View>
-        )
-    }
-}
+const HomeScreen = () => (
+    <View style={{ flex:1, alignItems:'center', justifyContent:'center' }}>
+        <Text>Home Screen</Text>
+    </View>
+)
 
-class DetailScreen extends React.Component {
-    render() {
-        return (
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <Text>Details Screen</Text>
-                <Button
-                    title="跳转到Home页"
-                    onPress={ () => this.props.navigation.navigate('Home') }
-                />
-                <Button
-                    title="再一次跳转到Details页"
-                    onPress={ () => {console.log(this.props.navigation); this.props.navigation.push('Details')} }
-                />
-            </View>
-        )
-    }
-}
+const ProfileScreen = () => (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text>Profile Screen</Text>
+    </View>
+)
 
-const RootStack = createStackNavigator(
+
+const RootTabs = createBottomTabNavigator(
     {
-        Home: HomeScreen,
-        Details: DetailScreen
+        Home: {
+            screen: HomeScreen
+        },
+        Profile: {
+            screen: ProfileScreen
+        }
     },
     {
-        initialRouteName: 'Details'
+        tabBarPosition: 'bottom',
+        animationEnabled: true,
+        tabBarOptions: {
+            activeTintColor: '#fff'
+        }
     });
 
-export default class App extends React.Component {
-    render() {
-        return <RootStack/>
-    }
-}
+export default RootTabs;
