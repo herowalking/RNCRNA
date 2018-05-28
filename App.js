@@ -3,8 +3,13 @@ import { FlatList, StyleSheet, Text, View, Button, Image } from 'react-native';
 import { createMaterialTopTabNavigator } from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 
+import DynamicScreen from './components/Wechat/DynamicScreen';
+import ContactScreen from './components/Wechat/ContactScreen';
+import FindScreen from './components/Wechat/FindScreen';
+import MyScreen from './components/Wechat/MyScreen';
+
 //头部公共组件
-class HeadScreen extends React.Component {
+/*class HeadScreen extends React.Component {
     render() {
         return (
             <View style={{height:65, backgroundColor:'#242529', padding:10}}>
@@ -19,10 +24,10 @@ class HeadScreen extends React.Component {
             </View>
         )
     }
-}
+}*/
 
 //动态组件
-const DynamicScreen = () => (
+/*const DynamicScreen = () => (
     <View style={styles.container}>
         <HeadScreen></HeadScreen>
         <View style={styles.container}>
@@ -49,10 +54,10 @@ const DynamicScreen = () => (
             />
         </View>
     </View>
-);
+);*/
 
 //通信录组件
-const ContactScreen = () => (
+/*const ContactScreen = () => (
     <View style={[styles.container, styles.findBody]}>
         <HeadScreen title="通讯录"></HeadScreen>
         <View style={styles.findView}>
@@ -96,10 +101,10 @@ const ContactScreen = () => (
             <Text style={styles.findViewText}>B.乔丹</Text>
         </View>
     </View>
-)
+)*/
 
 //发现组件
-const FindScreen = () => (
+/*const FindScreen = () => (
     <View style={[styles.container, styles.findBody]}>
         <HeadScreen title='发现'></HeadScreen>
         <View style={styles.findView}>
@@ -132,10 +137,10 @@ const FindScreen = () => (
             <Text style={styles.findViewText}>小程序</Text>
         </View>
     </View>
-)
+)*/
 
 //我的组件
-const MyScreen = () => (
+/*const MyScreen = () => (
     <View style={[styles.container, styles.findBody]}>
         <HeadScreen title='我的'></HeadScreen>
         <View style={styles.findView}>
@@ -176,46 +181,22 @@ const MyScreen = () => (
             <Text style={styles.findViewText}>设置</Text>
         </View>
     </View>
-)
+)*/
 
 
 const RootTabs = createMaterialTopTabNavigator(
     {
         Dynamic: {
             screen: DynamicScreen,
-            navigationOptions: ({navigation}) => ({
-                title: '动态',
-                tabBarIcon: ({tintColor}) => (
-                    <Icon name='ios-text-outline' size={26} color={tintColor}/>
-                )
-            }),
         },
         Contact: {
             screen: ContactScreen,
-            navigationOptions: ({navigation}) => ({
-                title: '通信录',
-                tabBarIcon: ({tintColor}) => (
-                    <Icon name='ios-contacts-outline' size={26} color={tintColor} />
-                )
-            })
         },
         Find: {
             screen: FindScreen,
-            navigationOptions: ({navigation}) => ({
-                title: '发现',
-                tabBarIcon: ({tintColor}) => (
-                    <Icon name='ios-compass-outline' size={26} color={tintColor}/>
-                )
-            })
         },
         My: {
             screen: MyScreen,
-            navigationOptions: ({navigation}) => ({
-                title: '我的',
-                tabBarIcon: ({tintColor}) => (
-                    <Icon name='ios-person-outline' size={26} color={tintColor}/>
-                )
-            })
         }
     },
     {
@@ -248,7 +229,7 @@ const RootTabs = createMaterialTopTabNavigator(
     });
 
 //组件样式
-const styles = StyleSheet.create({
+/*const styles = StyleSheet.create({
     container: {
         flex: 1
     },
@@ -295,6 +276,6 @@ const styles = StyleSheet.create({
         borderTopWidth:1,
         borderTopColor: '#EBEBEB'
     }
-});
+});*/
 
 export default RootTabs;
