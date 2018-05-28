@@ -53,8 +53,48 @@ const DynamicScreen = () => (
 
 //通信录组件
 const ContactScreen = () => (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Contact Screen</Text>
+    <View style={[styles.container, styles.findBody]}>
+        <HeadScreen title="通讯录"></HeadScreen>
+        <View style={styles.findView}>
+            <Icon style={styles.findViewIcon} name="md-person-add" color="#51BBE5" size={22} />
+            <Text style={styles.findViewText}>新的朋友</Text>
+        </View>
+
+        <View style={[styles.findView,styles.findMT]}>
+            <Icon style={styles.findViewIcon} name="ios-people-outline" color="#51BBE5" size={22} />
+            <Text style={styles.findViewText}>群聊</Text>
+        </View>
+
+        <View style={[styles.findView,styles.findMT]}>
+            <Icon style={styles.findViewIcon} name="ios-bookmark-outline" color="#BAEE44" size={22} />
+            <Text style={styles.findViewText}>标签</Text>
+        </View>
+
+        <View style={[styles.findView,styles.findMT]}>
+            <Icon style={styles.findViewIcon} name="ios-contact-outline" color="#3399FF" size={22} />
+            <Text style={styles.findViewText}>公众号</Text>
+        </View>
+        <View style={{ marginTop:15}}>
+            <Text>我的企业</Text>
+        </View>
+        <View style={styles.findView}>
+            <Icon style={styles.findViewIcon} name="ios-color-filter-outline" color="#55C1E7" size={22} />
+            <Text style={styles.findViewText}>奔驰集团</Text>
+        </View>
+        <View style={{ marginTop:10}}>
+            <Text>A</Text>
+        </View>
+        <View style={styles.findView}>
+            <Icon style={styles.findViewIcon} name="ios-cloud-outline" color="#55C1E7" size={22} />
+            <Text style={styles.findViewText}>阿里云</Text>
+        </View>
+        <View style={{ marginTop:10}}>
+            <Text>B</Text>
+        </View>
+        <View style={styles.findView}>
+            <Icon style={styles.findViewIcon} name="ios-basketball-outline" color="#55C1E7" size={22} />
+            <Text style={styles.findViewText}>B.乔丹</Text>
+        </View>
     </View>
 )
 
@@ -155,7 +195,7 @@ const RootTabs = createMaterialTopTabNavigator(
             navigationOptions: ({navigation}) => ({
                 title: '通信录',
                 tabBarIcon: ({tintColor}) => (
-                    <Icon name='ios-contact-outline' size={26} color={tintColor} />
+                    <Icon name='ios-contacts-outline' size={26} color={tintColor} />
                 )
             })
         },
@@ -179,6 +219,7 @@ const RootTabs = createMaterialTopTabNavigator(
         }
     },
     {
+        initialRouteName: 'Contact',
         tabBarPosition: 'bottom', //选项卡位置
         animationEnabled: true,
         tabBarOptions: {
