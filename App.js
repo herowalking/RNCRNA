@@ -51,10 +51,46 @@ const DynamicScreen = () => (
     </View>
 );
 
+//通信录组件
+const ContactScreen = () => (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text>Contact Screen</Text>
+    </View>
+)
+
 //发现组件
 const FindScreen = () => (
-    <View style={{ flex:1, alignItems:'center', justifyContent:'center' }}>
-        <Text>Find Screen</Text>
+    <View style={[styles.container, styles.findBody]}>
+        <HeadScreen title='发现'/>
+        <View style={styles.findView}>
+            <Icon style={styles.findViewIcon} name="ios-contacts-outline" color="#3399FF" size={22} />
+            <Text style={styles.findViewText}>朋友圈</Text>
+        </View>
+
+        <View style={styles.findView}>
+            <Icon style={styles.findViewIcon} name="ios-crop-outline" color="#51BBE5" size={22} />
+            <Text style={styles.findViewText}>扫一扫</Text>
+        </View>
+
+        <View style={styles.findView}>
+            <Icon style={styles.findViewIcon} name="ios-search-outline" color="#51BBE5" size={22} />
+            <Text style={styles.findViewText}>搜一搜</Text>
+        </View>
+
+        <View style={styles.findView}>
+            <Icon style={styles.findViewIcon} name="ios-tablet-portrait" color="#BAEE44" size={22} />
+            <Text style={styles.findViewText}>购物</Text>
+        </View>
+
+        <View style={[styles.findView,styles.findMT]}>
+            <Icon style={styles.findViewIcon} name="ios-game-controller-b-outline" color="#3399FF" size={22} />
+            <Text style={styles.findViewText}>游戏</Text>
+        </View>
+
+        <View style={styles.findView}>
+            <Icon style={styles.findViewIcon} name="ios-code" color="#55C1E7" size={22} />
+            <Text style={styles.findViewText}>小程序</Text>
+        </View>
     </View>
 )
 
@@ -78,7 +114,7 @@ const RootTabs = createMaterialTopTabNavigator(
             }),
         },
         Contact: {
-            screen: FindScreen,
+            screen: ContactScreen,
             navigationOptions: ({navigation}) => ({
                 title: '通信录',
                 tabBarIcon: ({tintColor}) => (
@@ -157,6 +193,29 @@ const styles = StyleSheet.create({
         color:'gray',
         fontSize:12,
         marginTop:8
+    },
+    //发现组件样式
+    findView: {
+        backgroundColor:'#fff',
+        marginTop:15,
+        padding:10,
+        justifyContent:'center',
+        flexDirection:'row'
+    },
+    findViewIcon: {
+        flex: 1
+    },
+    findViewText: {
+        flex: 9,
+        marginTop:1
+    },
+    findBody: {
+        backgroundColor: '#EBEBEB'
+    },
+    findMT: {
+        marginTop:0,
+        borderTopWidth:1,
+        borderTopColor: '#EBEBEB'
     }
 });
 
