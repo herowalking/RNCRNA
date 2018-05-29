@@ -9,7 +9,11 @@ class HomeScreen extends React.Component {
                 <Text>Home Screen</Text>
                 <Button
                     title='Go to details'
-                    onPress={() => this.props.navigation.navigate('Detail')}
+                    /* 1. Navigate to the Details route with params  */
+                    onPress={() => this.props.navigation.navigate('Detail', {
+                        itemId: 86,
+                        otherParam: 'anything you want here',
+                    })}
                 />
             </View>
         );
@@ -18,12 +22,21 @@ class HomeScreen extends React.Component {
 
 class DetailScreen extends React.Component {
     render() {
+        /* 2. Get the param, provide a fallback value if not available */
+        const { navigation } = this.props;
+        const itemId = navigation.getParam('itemId', 'NO-ID');
+        const otherParam = navigation.getParam('otherParm', 'some default value');
+
         return (
             <View styles={{ flex:1, alignItems:'center', justifyContent:'center' }}>
                 <Text>Deatil Screen</Text>
+                <Text>itemId: {JSON.stringify(itemId)}</Text>
+                <Text>otherParam: {JSON.stringify(otherParam)}</Text>
                 <Button
                     title='Go go detail... again'
-                    onPress={() => this.props.navigation.push('Detail')}
+                    onPress={() => this.props.navigation.push('Detail', {
+                        itemId: Math.floor(Math.random() * 100)
+                    })}
                 />
                 <Button
                     title="Go to Home"
