@@ -1,10 +1,11 @@
 import React from 'react';
-import { createMaterialTopTabNavigator } from 'react-navigation';
+import { createStackNavigator, createMaterialTopTabNavigator } from 'react-navigation';
 
 import DynamicScreen from './components/Wechat/DynamicScreen';
 import ContactScreen from './components/Wechat/ContactScreen';
 import FindScreen from './components/Wechat/FindScreen';
 import MyScreen from './components/Wechat/MyScreen';
+import DynamicDetailScreen from './components/Wechat/DynamicDetailScreen';
 
 const RootTabs = createMaterialTopTabNavigator(
     {
@@ -22,7 +23,7 @@ const RootTabs = createMaterialTopTabNavigator(
         }
     },
     {
-        initialRouteName: 'Contact',
+        initialRouteName: 'Dynamic',
         tabBarPosition: 'bottom', //选项卡位置
         animationEnabled: true,
         tabBarOptions: {
@@ -50,4 +51,15 @@ const RootTabs = createMaterialTopTabNavigator(
         }
     });
 
-export default RootTabs;
+//路由
+const MyApp = createStackNavigator({
+    dynamicStack: {
+        screen:RootTabs
+    },
+    dynamicDetail: {
+        path:'people/:name',
+        screen:DynamicDetailScreen
+    }
+});
+
+export default MyApp;
