@@ -33,6 +33,10 @@ class DetailScreen extends React.Component {
                     title="Go back"
                     onPress={() => this.props.navigation.goBack()}
                 />
+                <Button
+                    title='popToTop'
+                    onPress={() => this.props.navigation.popToTop()}
+                />
             </View>
         )
     }
