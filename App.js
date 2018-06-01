@@ -31,10 +31,14 @@ class HomeScreen extends React.Component {
 }
 
 class DetailScreen extends React.Component {
-    static navigationOptions = ({ navigation }) => {
-        const otherParam = navigation.getParam('otherParam', 'some default value');
+    static navigationOptions = ({ navigation, navigationOptions }) => {
+        const { params } = navigation.state;
         return {
-            title: otherParam
+            title: navigation.getParam('otherParam', 'A Nested Details Screen'),
+            headerStyle:{
+                backgroundColor:navigationOptions.headerTintColor,
+            },
+            headerTintColor: navigationOptions.headerStyle.backgroundColor
         }
     };
     render() {
