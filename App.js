@@ -14,10 +14,29 @@ class LogoTitle extends React.Component {
 }
 
 class HomeScreen extends React.Component {
-    static navigationOptions = {
-        // headerTitle instead of title
-        headerTitle:<LogoTitle/>
+    static navigationOptions = ({ navigation }) => {
+        const params = navigation.state.params || {};
+
+        return {
+            headerTitle:<LogoTitle/>,
+            headerRight:(
+                <Button onPress={params.increaseCount} title='+1'/>
+            )
+        };
     };
+
+    componentWillMount() {
+        this.props.navigation.setParams({ increaseCount: this._increaseCount });
+    }
+
+    state = {
+        count: 0
+    }
+
+    _increaseCount = () => {
+        this.setState({ count: this.state.count + 1 });
+        alert(this.state.count)
+    }
     render() {
         return (
             <View style={{ flex:1, alignItems:'center', justifyContent:'center' }}>
