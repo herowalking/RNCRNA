@@ -4,8 +4,15 @@ import { createStackNavigator } from 'react-navigation';
 
 class HomeScreen extends React.Component {
     static navigationOptions = {
-        title: 'Home'
-    }
+        title: 'Home',
+        headerStyle:{
+            backgroundColor:'#f4511e'
+        },
+        headerTintColor:'#fff',
+        headerTitleStyle:{
+            fontWeight:'bold'
+        }
+    };
     render() {
         return (
             <View style={{ flex:1, alignItems:'center', justifyContent:'center' }}>
